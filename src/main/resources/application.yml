@@ -1,0 +1,36 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: flow-dashboard-server
+  datasource:
+    url: jdbc:mysql://localhost:3306/flow_dashboard_db?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&autoReconnect=true&useSSL=false&useOldAliasMetadataBehavior=true
+    username: root
+    password: qazplm123!
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    continue-on-error: true
+  jpa:
+    database: mysql
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+  redis:
+    host: localhost
+    port: 6379
+    password: 123456
+    timeout: 10000
+    jedis:
+      pool:
+        max-active: 50
+        min-idle: 5
+# log config
+logging:
+  level.root: info
+  file: /root/logs/${spring.application.name}.log
+# 自定义
+info:
+  domain: localhost
+  auth:
+    tokenPrefix: flow
+    overdueTime: 30
+    domain: ${info.domain}
